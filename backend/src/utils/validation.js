@@ -1,5 +1,5 @@
 import validator from "validator"
-const signUpValidator=(req)=>{
+export const signUpValidator=(req)=>{
     const {firstName,email,password}=req.body;
     if(!firstName){
         throw new Error("Name is not Valid !!");
@@ -10,5 +10,11 @@ const signUpValidator=(req)=>{
     if(!validator.isStrongPassword(password)){
         throw new Error("Please enter a strong password !!")
     }
+} 
+export const validateEditprofile=(req)=>{
+    const allowedEditsItem=["firstName","lastName","age","gender","about","skills"];
+    const isEditAllowed=Object.keys(req.body).every((field)=>{
+        return allowedEditsItem.includes(field);
+    })
+    return isEditAllowed;
 }
-export default signUpValidator;

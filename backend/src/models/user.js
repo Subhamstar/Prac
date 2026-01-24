@@ -21,7 +21,7 @@ const userSchema=new mongoose.Schema({
         trim:true,
         lowercase:true,
         required:true,
-        unique:true,
+        unique:true,   //if it is unique then mongodb automatically created a index and unique index is much faster along with norma faster
         validate(value){
             if(!validator.isEmail(value)){
                 throw new Error("Please enter a correct email address !!")
@@ -45,7 +45,10 @@ const userSchema=new mongoose.Schema({
     },
     gender:{
         type:String,
-        enum:["Male","Female","others"]
+        enum:{
+            values:["Male","Female","others"],
+            message:`{VALUE}is incorrect gender must be Male/Female/others`
+        },
     },
     photoUrl:{
         type:String,

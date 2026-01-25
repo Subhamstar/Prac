@@ -7,11 +7,12 @@ authRouter.post("/signUp",async (req,res)=>{
     try{
         // console.log(req.body);
         signUpValidator(req);
-        const {firstName,email,password}=req.body;
+        const {firstName,email,password,lastName}=req.body;
         const hashedPassword=await bcrypt.hash(password,10);
         const newUser= new User({
-            firstName:firstName,
-            email:email,
+            firstName,
+            email,
+            lastName,
             password:hashedPassword
         })
         await newUser.save();

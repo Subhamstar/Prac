@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Gradient Animation */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradientMove 6s ease infinite;
+}
+
+/* Cursor Wave */
+.cursor-wave {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 165, 0, 0.4),
+    rgba(59, 130, 246, 0.3),
+    transparent 70%
+  );
+
+  border-radius: 50%;
+  filter: blur(40px);
+
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+
+  transition: all 0.05s linear;
+}

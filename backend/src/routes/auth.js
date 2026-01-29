@@ -42,7 +42,8 @@ authRouter.post("/login",async (req,res)=>{
             sameSite:"lax",
             secure:false
         });
-        res.send("Login Sucessfully !!")
+        // res.send("Login Sucessfully !!")
+        res.send(user)
     }
     catch(err){
         res.status(400).send("Eroorr while login")

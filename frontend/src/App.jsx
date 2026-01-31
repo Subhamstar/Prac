@@ -3,10 +3,11 @@ import NavBar from "./NavBar"
 import Body from "./Body"
 import Login from "./Login"
 import Profile from "./Profile"
-
+import {Profider} from 'react-redux'
 function App() {
   return (
    <>
+   <Provider>
    <BrowserRouter basename="/">
     <Routes>
       <Route path='/'element={<Body/>}>
@@ -15,6 +16,7 @@ function App() {
       </Route>
     </Routes>
    </BrowserRouter>
+   </Provider>
    </>
   )
 }

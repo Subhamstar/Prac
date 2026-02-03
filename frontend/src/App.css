@@ -1,21 +1,25 @@
 @plugin "daisyui";
 /* Cursor Wave Effect */
+body {
+  padding-bottom: 64px;
+}
+
 .cursor-wave {
   position: absolute;
-  width: 180px;
-  height: 180px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(255,165,0,0.4),
-    rgba(59,130,246,0.2),
+    rgba(255, 165, 0, 0.45),
+    rgba(255, 165, 0, 0.2),
     transparent 70%
   );
-  border-radius: 50%;
-  filter: blur(40px);
   transform: translate(-50%, -50%);
   pointer-events: none;
-  transition: transform 0.05s linear;
+  will-change: transform, left, top;
 }
+
 
 /* Glow on hover */
 footer:hover {

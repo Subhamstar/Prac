@@ -3,7 +3,7 @@ import NavBar from "./NavBar"
 import Body from "./Body"
 import Login from "./Login"
 import Profile from "./Profile"
-import {Profider} from 'react-redux'
+import {Provider} from 'react-redux'
 import appStore from './utils/appStore'
 function App() {
   return (

@@ -1,18 +1,18 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
+  const user = useSelector((store) => store.user);
+
   return (
     <div
       className="
 navbar fixed top-0 left-0 z-50 w-full
-
 bg-gradient-to-r from-red-500 via-blue-700 to-red-400
 bg-[length:200%_200%]
 animate-gradient
-
 backdrop-blur-md bg-opacity-90
 text-neutral-content
-
 shadow-lg
 transition-all duration-500
 hover:shadow-[0_0_25px_rgba(255,165,0,0.6)]
@@ -26,53 +26,59 @@ hover:shadow-[0_0_25px_rgba(255,165,0,0.6)]
       </div>
 
       {/* Right */}
-      <div className="flex gap-2 mr-6">
+      {user && (
+        <div className="flex gap-2 mr-6">
+          <div className="dropdown dropdown-end">
+            {/* Avatar */}
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar hover:scale-110 transition"
+            >
+              <div className="w-10 rounded-full ring ring-orange-400 ring-offset-base-100 ring-offset-2">
+                <img
+                  alt="User Avatar"
+                  src={user?.photoUrl || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp";
+                  }}
+                />
 
-        <div className="dropdown dropdown-end">
-
-          {/* Avatar */}
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar hover:scale-110 transition"
-          >
-            <div className="w-10 rounded-full ring ring-orange-400 ring-offset-base-100 ring-offset-2">
-              <img
-                alt="User Avatar"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-              />
+              </div>
             </div>
-          </div>
 
-          {/* Dropdown */}
-          <ul
-            tabIndex={0}
-            className="
+            {/* Dropdown */}
+            <ul
+              tabIndex={0}
+              className="
 menu menu-sm dropdown-content
 bg-black/70 backdrop-blur-md
 text-white
 rounded-xl z-50 mt-3 w-52 p-2 shadow-xl
 border border-white/20
 "
-          >
-            <li>
-              <a className="justify-between hover:bg-orange-500/30">
-                Profile
-                <span className="badge badge-warning">New</span>
-              </a>
-            </li>
+            >
+              <li className="px-3 py-2 text-sm text-orange-300 font-semibold">
+                👋 Welcome, {user.firstName}
+              </li>
 
-            <li>
-              <a className="hover:bg-orange-500/30">Settings</a>
-            </li>
+              <li>
+                <a className="hover:bg-orange-500/30">Profile</a>
+              </li>
 
-            <li>
-              <a className="hover:bg-red-500/30">Logout</a>
-            </li>
-          </ul>
+              <li>
+                <a className="hover:bg-orange-500/30">Settings</a>
+              </li>
 
+              <li>
+                <a className="hover:bg-red-500/30">Logout</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

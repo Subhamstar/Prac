@@ -29,9 +29,7 @@ const Footer = () => {
         rafId = null;
       });
     };
-
     footer.addEventListener("mousemove", handleMouseMove);
-
     return () => {
       footer.removeEventListener("mousemove", handleMouseMove);
       if (rafId) cancelAnimationFrame(rafId);
